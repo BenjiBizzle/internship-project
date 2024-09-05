@@ -26,6 +26,7 @@ def click_filters(context):
 
 @then('Filter the products by price range from 1200000 to 2000000 AED')
 def filter_product_by_price_range(context):
+    sleep(5)
     context.app.main_page.click_from_price()
     context.app.main_page.click_to_price()
     context.app.main_page.click_apply()
