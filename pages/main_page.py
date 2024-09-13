@@ -4,7 +4,7 @@ from pages.base_page import Page
 
 
 class MainPage(Page):
-    CLICK_SECONDARY_OPTION = (By.XPATH, "//div[text()='Secondary']")
+    CLICK_SECONDARY_OPTION = (By.CSS_SELECTOR, "#w-node-b528dfcf-d2ee-f936-302e-86e97f0796ec-7f66df20")
     CLICK_FILTERS = (By.CSS_SELECTOR, ".filter-button")
     CLICK_FROM_PRICE = (By.CSS_SELECTOR, "[wized='unitPriceFromFilter']")
     CLICK_TO_PRICE = (By.CSS_SELECTOR, "[wized='unitPriceToFilter']")

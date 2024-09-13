@@ -12,6 +12,7 @@ from app.application import Application
 
 # Command to run tests with Allure & Behave:
 # behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/target_search.feature
+# allure serve test_results/ #to get a report
 
 
 def browser_init(context, scenario_name):
@@ -49,19 +50,30 @@ def browser_init(context, scenario_name):
 
     ### BROWSERSTACK ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    bs_user = 'benjaminballardo_Mk6spt'
-    bs_key = 'xtBpFN3m1EruJek3KpNz'
-    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    # bs_user = 'benjaminballardo_Mk6spt'
+    # bs_key = 'xtBpFN3m1EruJek3KpNz'
+    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    #
+    # options = Options()
+    # bstack_options = {
+    #     "os": "Windows",
+    #     "osVersion": "11",
+    #     'browserName': 'Chrome',
+    #     'sessionName': scenario_name
+    # }
+    # options.set_capability('bstack:options', bstack_options)
+    # context.driver = webdriver.Remote(command_executor=url, options=options)
+    # end browserstack
 
-    options = Options()
-    bstack_options = {
-        "os": "Windows",
-        "osVersion": "11",
-        'browserName': 'Chrome',
-        'sessionName': scenario_name
-    }
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
+    # Mobile Testing
+    chrome_options = Options()
+    mobile_emulation = {"deviceName": "Nexus 5"}
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    # Initialize Chrome Webdriver
+    driver_path = ChromeDriverManager().install()
+    service = Service(driver_path)
+    context.driver = webdriver.Chrome(service=service, options=chrome_options)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
