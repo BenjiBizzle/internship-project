@@ -6,7 +6,7 @@ from time import sleep
 @given('Open the main page')
 def open_main(context):
     context.app.login_page.open()
-    sleep(4)
+    sleep(2)
 
 
 @when('Log in to the page')

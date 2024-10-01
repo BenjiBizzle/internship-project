@@ -24,6 +24,12 @@ def click_filters(context):
     sleep(3)
 
 
+@then('Click on settings option')
+def click_settings_option(context):
+    context.app.main_page.click_settings()
+    sleep(3)
+
+
 @then('Filter the products by price range from 1200000 to 2000000 AED')
 def filter_product_by_price_range(context):
     sleep(5)
@@ -33,21 +39,6 @@ def filter_product_by_price_range(context):
     sleep(3)
 
 
-# @then('Verify the price in all cards is inside the range (1200000 - 2000000)')
-# def verify_price_in_all_cards(context):
-#     expected_price =
-#     prices = context.driver.find_elements(*PRICE_ELEMENTS)
-#     for price in prices:
-#         price.click()
-#
-#         selected_price = context.driver.find_elements(*PRICE_ELEMENTS).text
-#         print('price', selected_price)
-#
-#         selected_color = selected_color.split('\n')[1]  # remove 'Color\n' part, keep Black'
-#         actual_colors.append(selected_color)
-#         print(actual_colors)
-#
-#     assert expected_price == actual_colors, f'Expected {expected_price} did not match actual {actual_colors}'
 @then('Verify the price in all cards is inside the range (1200000 - 2000000)')
 def verify_price_in_all_cards(context):
     # Define the expected range
@@ -70,7 +61,7 @@ def verify_price_in_all_cards(context):
             price_value = int(price_text.replace(',', '').replace('AED', '').strip())
 
             # Check if the price is within the range
-            if price_value not in range(min_price, max_price+1):
+            if price_value not in range(min_price, max_price + 1):
                 out_of_range_prices.append(price_value)
 
         except ValueError:

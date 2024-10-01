@@ -9,6 +9,7 @@ class MainPage(Page):
     CLICK_FROM_PRICE = (By.CSS_SELECTOR, "[wized='unitPriceFromFilter']")
     CLICK_TO_PRICE = (By.CSS_SELECTOR, "[wized='unitPriceToFilter']")
     CLICK_APPLY = (By.CSS_SELECTOR, "[wized='applyFilterButtonMLS']")
+    CLICK_SETTINGS = (By.CSS_SELECTOR, "[href='/settings']")
 
     def click_secondary(self):
         self.click(*self.CLICK_SECONDARY_OPTION)
@@ -29,3 +30,7 @@ class MainPage(Page):
 
     def click_apply(self):
         self.click(*self.CLICK_APPLY)
+
+    def click_settings(self):
+        self.click(*self.CLICK_SETTINGS)
+

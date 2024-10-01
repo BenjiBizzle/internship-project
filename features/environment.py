@@ -21,10 +21,14 @@ def browser_init(context, scenario_name):
     :param context: Behave context
     """
 
-    # driver_path = ChromeDriverManager().install()
-    # driver_path = './chromedriver'
+    # driver_path = './chromedriver'  # for macOS users
     # service = Service(driver_path)
     # context.driver = webdriver.Chrome(service=service)
+
+    driver_path = ChromeDriverManager().install()
+    driver_path = './chromedriver'
+    service = Service(driver_path)
+    context.driver = webdriver.Chrome(service=service)
 
     # driver_path = GeckoDriverManager().install()
     # service = Service(driver_path)
@@ -66,14 +70,14 @@ def browser_init(context, scenario_name):
     # end browserstack
 
     # Mobile Testing
-    chrome_options = Options()
-    mobile_emulation = {"deviceName": "Nexus 5"}
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-    # Initialize Chrome Webdriver
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service, options=chrome_options)
+    # chrome_options = Options()
+    # mobile_emulation = {"deviceName": "Nexus 5"}
+    # chrome_options = webdriver.ChromeOptions()
+    # chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    # # Initialize Chrome Webdriver
+    # driver_path = ChromeDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Chrome(service=service, options=chrome_options)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
